@@ -5,6 +5,8 @@ var quizresults = document.getElementById("results")
 var quest = document.getElementById("question")
 var tru = document.getElementById("true")
 var fal = document.getElementById("false")
+var right = 0
+var wrong = 0
 quizcont.style.display = "none"
 quizresults.style.display = "none"
 start.addEventListener("click", startquiz)
@@ -48,9 +50,26 @@ var question = [
 function startquiz() {
     start.style.display = "none"
     quizcont.style.display = "block"
+    displayQuestion()
+}
+function displayQuestion() {
     quest.innerHTML = question[quizquestion].question
 }
+
 function checkanswer() {
     console.log("true")
-    var useranswer = this
+    var useranswer = this.getAttribute("id")
+    if (useranswer == question[quizquestion]) {
+        right++
+    }
+    else {
+        wrong++
+    }
+    if (quizquestion < question.length - 1) {
+        quizquestion++
+        displayQuestion()
+    }
+    else {
+        console.log(right, wrong)
+    }
 }
