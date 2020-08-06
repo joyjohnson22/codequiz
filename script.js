@@ -5,6 +5,9 @@ var quizresults = document.getElementById("results")
 var quest = document.getElementById("question")
 var tru = document.getElementById("true")
 var fal = document.getElementById("false")
+var score = document.getElementById("score")
+var input = document.getElementById("unsername")
+var button = document.getElementById("savebtn")
 var right = 0
 var wrong = 0
 quizcont.style.display = "none"
@@ -12,7 +15,7 @@ quizresults.style.display = "none"
 start.addEventListener("click", startquiz)
 tru.addEventListener("click", checkanswer)
 fal.addEventListener("click", checkanswer)
-
+button.addEventListener("click", saveuser)
 var question = [
     {
         "question": "css is for cascading style sheets",
@@ -71,5 +74,14 @@ function checkanswer() {
     }
     else {
         console.log(right, wrong)
+        displayAnswer()
     }
+}
+function displayAnswer() {
+    quizcont.style.display = "none"
+    quizresults.style.display = "block"
+
+}
+function saveuser() {
+    console.log("saveuser")
 }
